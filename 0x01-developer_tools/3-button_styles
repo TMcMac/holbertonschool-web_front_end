@@ -1,49 +1,20 @@
-background-color rgba(0, 0, 0, 0)
-border-bottom-color rgb(248, 249, 250)
-border-bottom-left-radius 8px
-border-bottom-right-radius 8px
-border-bottom-style solid
-border-bottom-width 2px
-border-image-outset 0
-border-image-repeat stretch
-border-image-slice 100%
-border-image-source none
-border-image-width 1
-border-left-color rgb(248, 249, 250)
-border-left-style solid
-border-left-width 2px
-border-right-color rgb(248, 249, 250)
-border-right-style solid
-border-right-width 2px
-border-top-color rgb(248, 249, 250)
-border-top-left-radius 8px
-border-top-right-radius 8px
-border-top-style solid
-border-top-width 2px
-box-sizing border-box
-color rgb(248, 249, 250)
-cursor pointer
-display inline-block
-font-family Lato, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
-font-size 20px
-font-weight 400
-height 66px
-line-height 30px
-padding-bottom 16px
-padding-left 28px
-padding-right 28px
-padding-top 16px
-text-align center
-text-decoration-color rgb(248, 249, 250)
-text-decoration-line none
-text-decoration-style solid
-text-decoration-thickness auto
-text-size-adjust 100%
-transition-delay 0s, 0s, 0s, 0s
-transition-duration 0.15s, 0.15s, 0.15s, 0.15s
-transition-property color, background-color, border-color, box-shadow
-transition-timing-function ease-in-out, ease-in-out, ease-in-out, ease-in-out
-user-select none
-vertical-align middle
-width 219.672px
--webkit-tap-highlight-color rgba(0, 0, 0, 0)
+.btn-xl 
+padding: 1rem 1.75rem;
+font-size: 1.25rem;
+
+
+.btn-outline-light
+color: #f8f9fa;
+border-color: #f8f9fa;
+
+.btn 
+display: inline-block;
+font-weight: 400;
+text-align: center;
+vertical-align: middle;
+user-select: none;
+background-color: transparent;
+border: 0.125rem solid transparent;
+line-height: 1.5;
+border-radius: 0.5rem;
+transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
