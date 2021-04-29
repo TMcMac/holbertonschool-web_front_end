@@ -1,0 +1,28 @@
+/* Top level element selctors */
+
+/* Allows for smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #161616;
+}
+
+ a {
+     color: #161616;
+ }
+
+ /* Class Selectors */
+
+ .visually-hidden {
+     display: none;
+ }
+
+ .card-category {
+     color: #D73953;
+ }
+
+ .section-tagline {
+     color: #D73953;
+ }
