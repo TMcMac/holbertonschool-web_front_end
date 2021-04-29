@@ -19,19 +19,19 @@ body {
 }
 
 a {
-     color: var(--text-color);
+    color: var(--text-color);
  }
 
  /* Class Selectors */
 
  .visually-hidden {
-     display: none;
+    display: none;
  }
 
  .card-category {
-     color: var(--color-primary);
+    color: var(--color-primary);
  }
 
  .section-tagline {
-     color: var(--color-primary);
+    color: var(--color-primary);
  }
