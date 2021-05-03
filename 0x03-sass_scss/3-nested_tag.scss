@@ -1,0 +1,9 @@
+/* Use nested tags to affect margin */
+
+body {
+    margin: 0;
+
+    p {
+	margin: 10px;
+    }
+}

@@ -1,0 +1,9 @@
+/* Use nested tagging with a class name to affect text color */
+
+body {
+    color: #3D3D3D;
+
+    .red {
+	color: #FF0000;
+    }
+}
