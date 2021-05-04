@@ -1,0 +1,11 @@
+/*Using mixins for margins*/
+$ten: 10px;
+$fifteen: 15px;
+
+@mixin margins($property) {
+    margin-left: $property;
+    margin-right: $property;
+}
+
+body {@include margins($ten);}
+div {@include margins($fifteen);}
