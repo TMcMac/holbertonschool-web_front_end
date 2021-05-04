@@ -1,0 +1,10 @@
+/*Set a width with media query*/
+
+$small-screen: 320px;
+$smaller-font: 14px;
+
+h1 {
+    font-size: 20px;
+    @media screen and (max-width: #{$small-screen}) {
+	& { font-size: $smaller-font; }}
+}
