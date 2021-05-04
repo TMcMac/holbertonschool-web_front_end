@@ -1,0 +1,11 @@
+/*Using a loop to establish col widths*/
+$width-1: 100%;
+$width-2: 50%;
+$width-3: 33%;
+$width-4: 25%;
+
+@for $i from 1 through 4 {
+    .col-#{$i} {
+	width: $width-#{$i};
+    }
+}
