@@ -1,0 +1,10 @@
+/* Assign a new color to first child of body */
+$main-color: #3D3D3D;
+$red-color: #FF0000;
+
+body {
+    color: $main-color;
+    > .red {
+	color: $red-color;
+    }
+}
