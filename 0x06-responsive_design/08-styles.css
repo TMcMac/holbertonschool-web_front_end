@@ -46,8 +46,9 @@
     --line-height-base: 1.5;
     --line-height-big: 1.8;
   
+    
     /** SECTION **/
-    --section-padding: 5rem 0;
+    --section-padding: 5rem 1.5rem;
     --section-header-padding: 0 0 3rem;
     --section-header-align: center;
     --section-title-font-size: var(--font-size-xx-large);
@@ -60,7 +61,7 @@
     --section-tagline-font-family: var(--font-family-headings);
     --section-tagline-font-weight: var(--font-weight-bold);
     --section-tagline-margin: 0;
-    --section-body-padding: 2rem 0 4rem;
+    --section-body-padding: 2rem 0 0;
     --section-footer-padding: 3rem 0 0;
     --section-footer-align: center;
   
@@ -164,6 +165,17 @@
     color: var(--color-primary);
     background: var(--color-white);
   }
+
+  @media screen and (max-width: 480px) {
+    html {
+      font-size: 57%;
+    }
+  }
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    html {
+      font-size: 60%;
+    }
+  }
   
   /* Helpers
       ============================= */
@@ -219,10 +231,8 @@
   }
 
   @media screen and (max-width: 767px) {
-    --section-padding: 5rem 1.5rem;
-    --section-body-padding: 2rem 0 0;
 
-    .row ul.row {
+    .row, ul.row {
       flex-direction: column;
       margin: 0;
     }
@@ -254,7 +264,7 @@
     letter-spacing: var(--nav-item-letter-spacing);
   }
   
-  .nav .nav-item + .nav-item {
+  .nav .nav-item ~ .nav-item {
     margin: var(--nav-item-margin);
   }
   
@@ -318,7 +328,46 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  .header .menu-icon {
+    cursor: pointer;
+    padding: 2.5rem;
+    position: relative;
+    user-select: none;
+    display: none;
+  }
+
+  .header .menu-icon .navicon {
+    background: var(--color-white);
+    display: block;
+    width: 2rem;
+    height: .2rem;
+    position: relative;
+    transition: background .2s ease-out;
+  }
+
+  .header .menu-icon .navicon::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--color-white);
+    transition: all .2s ease-out;
+    top: .7rem;
+  }
   
+  .header .menu-icon .navicon::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--color-white);
+    transition: all .2s ease-out;
+    top: -.7rem;
+  }
+
   /* Footer
       ============================= */
   
@@ -434,6 +483,21 @@
     justify-content: center;
     min-height: 35vh;
   }
+
+  @media screen and (max-width:767px) {
+    .section-hero {
+      margin: -0.1rem 0;
+    }
+    
+    .hero-homepage {
+      background-position: 85% 0;
+    }
+    
+    .section-hero .section-body {
+      padding: 2rem;
+    } 
+  }
+
   /* Section Latest news
       ============================= */
 
@@ -535,6 +599,19 @@
     opacity: 1;
   }
   
+ @media screen and (max-width: 767px) {
+   .card-work .card-inner {
+    text-color: var(--color-white);
+    position: relative;
+   }
+   .card-work .card-title {
+    opacity: 1;
+   }
+   .card-work .card-title a {
+    padding: 2rem 1rem 0 1rem;
+   }
+ }
+
   /* Card SERVICES
       ============================= */
   
@@ -904,4 +981,55 @@
     padding: 0;
     cursor: text;
     margin: 0 1rem;
+  }
+
+  /* menu btn */
+
+  .header .menu-btn {
+    display: none;
+  }
+
+  .menu-btn:checked ~ .navbar-menu {
+    display: block;
+  }
+
+  .menu-btn:checked ~ .navbar-menu .nav {
+    max-height: 100%;
+    overflow: inherit;
+  }
+
+  .header .menu-btn:checked ~ .menu-icon .navicon::before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon .navicon::after {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    :root {
+      header-padding: 2rem 0 0;
+    }
+    .header {
+      background: var(--color-black);
+    }
+    .header-container {
+      flex-wrap: wrap;
+      padding: 0 1.5rem;
+    }
+    .header .menu-icon {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .header-logo {
+      flex-basis: 70%;
+    }
+  }
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    .header-logo {
+      flex-basis: 79%;
+    }
   }
