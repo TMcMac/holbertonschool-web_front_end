@@ -994,6 +994,10 @@
     top: 0;
   }
 
+  .header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+
   @media screen and (max-width: 767px) {
     :root {
       header-padding: 2rem 0 0;
