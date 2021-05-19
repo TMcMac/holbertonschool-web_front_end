@@ -1017,7 +1017,7 @@
 
   @media screen and (max-width: 767px) {
     :root {
-      header-padding: 2rem 0 0;
+      --header-padding: 2rem 0 0;
     }
     .header {
       background: var(--color-black);
