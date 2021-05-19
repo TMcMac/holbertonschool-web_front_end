@@ -984,14 +984,17 @@
     overflow: inherit;
   }
 
+  .header .menu-btn:checked ~ .menu-icon .navicon::before,
+  .header .menu-btn:checked ~ .menu-icon .navicon::after {
+    top: 0;
+  }
+
   .header .menu-btn:checked ~ .menu-icon .navicon::before {
     transform: rotate(-45deg);
-    top: 0;
   }
   
   .header .menu-btn:checked ~ .menu-icon .navicon::after {
     transform: rotate(45deg);
-    top: 0;
   }
 
   .header .menu-btn:checked ~ .menu-icon .navicon {
