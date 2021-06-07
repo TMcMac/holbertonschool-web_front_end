@@ -219,9 +219,10 @@
   }
 
   @media (max-width: 767px) {
-    --section-padding: 5rem 1.5rem;
-    --section-body-padding: 2rem 0 0;
-
+    :root {
+      --section-padding: 5rem 1.5rem;
+      --section-body-padding: 2rem 0 0;
+    }
     .row ul.row {
       flex-direction: column;
       margin: 0;
