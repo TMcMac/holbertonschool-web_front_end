@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <script type="application/javascript"
+                src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+                integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+                crossorigin="anonymous"></script>
+        <title>Task 7</title>
+
+    </head>
+
+    <body>
+        <script>
+            const createSearchForm = () => {
+                $("body").append("<form><input type='text'></form>");
+                $("form").append("<input type='submit'>");
+                $("form").submit(event => {
+                    event.preventDefault();
+                    queryWikipedia($('input').val());
+                });
+                $("body").append("<ul></ul>");
+                $("body").append("<ul id='pagination'></ul>");
+            }
+
+            const addNewArticle = (id, title, snippet) => {
+                const listItem = $("<li></li>").append(`<p><span>${id} - <b>${title}</b></span></p>`, `<p>${snippet}</p>`);
+                $("ul").append(listItem);
+            }
+
+            const queryWikipedia = (search, offset = 0) => {
+                let url = "https://en.wikipedia.org/w/api.php";
+                // parameters used to build url
+                const params = {
+                    action: "query",
+                    list: "search",
+                    srsearch: search,
+                    format: "json",
+                    sroffset: offset
+                };
+                // build url based on params
+                url = url + "?origin=*";
+                Object.keys(params).forEach(key => {
+                    url += "&" + key + "=" + params[key];
+                });
+                //send GET request
+                $.get(url, response => {
+                    const {search} = response.query;
+                    const {totalhits} = response.query.searchinfo;
+                    const {sroffset} = response.continue;
+                    search.forEach(data => {
+                        const {pageid, title, snippet} = data;
+                        addNewArticle(pageid, title, snippet);
+                    });
+                    buildPagination(totalhits, 10, sroffset);
+                });
+            }
+
+            const buildPagination = (numberOfItems, itemsPerPage, currentOffset) => {
+                $("#pagination").empty();
+                $("#pagination").css({"list-style-type":"none"});
+                /* 
+                 * Write a loop that will display the pagination 
+                 * (using the total number of items divided by the number of items per page)
+                 */
+
+                for (let i = 0; i <= numberOfItems / itemsPerPage; i++) {
+                
+                 /*
+                  * For each page, create a list item
+                  *     - Add some CSS for each item (cursor: 'pointer', 10px margin left,
+                  *       and bold when this is the current page)
+                  */
+                  const li = $("<li></li>").css({
+                      "cursor":"pointer",
+                      "margin-left":"10px",
+                      "display":"inline"
+                    });
+                  if (i === currentOffset - 10){
+                      li.css("font-weight", "bold")
+                  }
+                  // The text of the item should be the page number
+                  $("#pagination li").last().text(i);
+                  $("#pagination").append(li);
+                }
+                /*
+                 * When clicking on a page number, it should call the function
+                 * queryWikipedia with the right offset
+                 */
+                $("#pagination li").click(event => {
+                    const newOffset = (event.target.innerHTML);
+                    $("ul:first-of-type").empty();
+                    queryWikipedia($('input').val(), newOffset - 1);
+                  });
+            }
+
+            $(document).ready(() => {
+                createSearchForm();
+            });
+        </script>
+    </body>
+
+</html>

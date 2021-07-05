@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <script type="application/javascript"
+                src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+                integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+                crossorigin="anonymous"></script>
+        <title>Task 0</title>
+
+    </head>
+
+    <body>
+        <script>
+            const createFamilyTree = function() {
+                $("body").append("<table>");
+                $("table").append("<thead>", "<tbody>")
+                $("thead").append("<tr>");
+                $("thead tr").append("<th>", "<th>");
+                $("th:nth-child(1)").text("Firstname");
+                $("th:nth-child(2)").text("Lastname");
+            }
+
+            const addNewMember = function (firstName, lastName, position) {
+                if (position === 'before') {
+                    $("tbody").prepend("<tr>");
+                    $("tbody tr").append("<td>", "<td>", "<td>");
+                    $("td:nth-child(1)").first().text(firstName);
+                    $("td:nth-child(2)").first().text(lastName);
+                } else {
+                    $("tbody").append("<tr>");
+                    $("tbody tr").append("<td>", "<td>", "<td>");
+                    $("td:nth-child(1)").last().text(firstName);
+                    $("td:nth-child(2)").last().text(lastName);
+                }
+                
+                $("td:nth-child(3)").text("(x)");
+                $("td:nth-child(3)").css("background-color", "orange");
+
+                $("td:nth-child(3)").on("click", function(){
+                    $(this).parent().remove();
+                })
+            }
+
+            const createForm = () => {
+                const form = $("<form>")
+                /*  add before the table two input of type text */
+                $("table").before("<form><label for='firstname'></label><input type='text' id='firstname' name='firstname'><label for='lastname'></label><input type='text' id='lastname' name='lastname'></form>");
+                /* add a select with two options as well: before and after with corresponding Before and After text */
+                $("form").append("<label for='select-before-or-after'></label><select id='select-before-or-after' name='select-before-or-after'><option value='before'>Before</option><option value='after'>After</option></select>");
+                /* add a input of type submit */
+                $("form").append("<label for='submit'></label><input type='submit' id='submit' name='submit'>");
+                /* When the user clicks on the submit, it should call the function addNewMember with the value of the two inputs and the value of the select element*/
+                $("form").submit(event => {
+                    event.preventDefault();
+                    addNewMember($('input').first().val(), $('input:nth-of-type(2)').val(), $('select').val());
+                });
+            }
+
+            $( document ).ready(() => {
+                createFamilyTree();
+                createForm();
+            });
+
+        </script>
+    </body>
+
+</html>

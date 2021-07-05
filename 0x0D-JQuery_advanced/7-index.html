@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <script type="application/javascript"
+                src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+                integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+                crossorigin="anonymous"></script>
+        <title>Task 7</title>
+
+    </head>
+
+    <body>
+        <script>
+            const createSearchForm = () => {
+                $("body").append("<form><input type='text'></form>");
+                $("form").append("<input type='submit'>");
+                $("form").submit(event => {
+                    event.preventDefault();
+                    queryWikipedia($('input').val());
+                });
+                $("body").append("<ul></ul>");
+            }
+
+            const addNewArticle = (id, title, snippet) => {
+                const listItem = $("<li></li>").append(`<p><span>${id} - <b>${title}</b></span></p>`, `<p>${snippet}</p>`);
+                $("ul").append(listItem);
+            }
+
+            const queryWikipedia = search => {
+                let url = "https://en.wikipedia.org/w/api.php";
+                const params = {
+                    action: "query",
+                    list: "search",
+                    srsearch: search,
+                    format: "json"
+                };
+                // complete the url with the parameters
+                url = url + "?origin=*";
+                Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+                fetch(url)
+                    .then(function(response){return response.json();})
+                    .then(function(response) {
+                        let results = response.query.search;
+                        results.forEach((result) => {
+                            addNewArticle(result.pageid, result.title, result.snippet);
+                        });               
+                    })
+                    .catch(function(error){console.log(error);});
+            }                  
+
+            $(document).ready(() => {
+                createSearchForm();
+            });
+        </script>
+    </body>
+
+</html>
